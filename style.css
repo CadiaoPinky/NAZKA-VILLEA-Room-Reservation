@@ -30,7 +30,7 @@ header{position:sticky; top:env(safe-area-inset-top,0px); z-index:29; background
 .hlogo{width:min(78vw,430px); height:auto}
 .tag{font-family:'Cormorant Garamond',serif; font-style:normal; font-size:clamp(1.6rem,5vw,2.5rem); margin:18px 0 8px}
 .tag b{font-style:italic; font-weight:700}
-.loc{display:flex; flex-wrap:wrap; justify-content:center; gap:4px 10px; margin:0 0 24px; font-size:.1000rem}
+.loc{display:flex; flex-wrap:wrap; justify-content:center; gap:4px 10px; margin:0 0 24px; font-size:.1000px}
 .loc a{font-weight:700; text-underline-offset:4px}
 .cta{display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
 .btn{display:inline-block; background:var(--accent); color:var(--accent-ink); border:0; border-radius:10px; padding:12px 24px; font:700 .84rem 'Roboto Mono',monospace; text-decoration:none; cursor:pointer; letter-spacing:.04em; transition:filter .2s}
