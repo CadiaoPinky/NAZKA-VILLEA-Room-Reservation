@@ -1,12 +1,11 @@
 (function(){
   var F='Main bed for 2 • ', NOTE2='Rates are based on 2 guests. Additional guest fee applies beyond the included 2 guests, up to the maximum room capacity.';
   var EXTRA='Stove use — +₱500 • Collapsible tent + monoblock chairs — +₱1,500 • Extension — ₱500/hour';
-  // ---- EDIT HERE: rooms, photos, prices and descriptions ----
   var ITEMS=[
    {id:'room1',nav:'Room 1',e:'Overnight Accommodation',t:'Room 1 – Mountain View',tag:'Good for 2 pax, max 4 pax',pr:['₱2,500','₱3,000'],
-    ph:['r11.jpeg','r12.jpg','room1_img3.jpg*'],bl:[['Room features','Main bed for 2 • Sliding/pull-out bed for 2 • Air-conditioned • Mountain view • Pool access'],['Additional guest','₱400/person/night']],n:NOTE2,bk:'Room 1'},
+    ph:['r11.jpeg','r12.jpg','room1_img3.jpg'],bl:[['Room features','Main bed for 2 • Sliding/pull-out bed for 2 • Air-conditioned • Mountain view • Pool access'],['Additional guest','₱400/person/night']],n:NOTE2,bk:'Room 1'},
    {id:'room2',nav:'Room 2',e:'Overnight Accommodation',t:'Room 2 – Mountain View + Balcony',tag:'Good for 2 pax, max 4 pax',pr:['₱3,000','₱3,500'],
-    ph:['r21.jpg','r22.jpg*','r23.jpg*','r24.jpg'],bl:[['Room features','Main bed for 2 • Sofa bed for 2 • Air-conditioned • Spacious room • Private balcony • Mountain view • Pool access'],['Additional guest','₱400/person/night']],n:NOTE2,bk:'Room 2'},
+    ph:['r21.jpg','r22.jpg','r23.jpg','r24.jpg'],bl:[['Room features','Main bed for 2 • Sofa bed for 2 • Air-conditioned • Spacious room • Private balcony • Mountain view • Pool access'],['Additional guest','₱400/person/night']],n:NOTE2,bk:'Room 2'},
    {id:'kubo',nav:'Kubo Stay',e:'A stay of its own',t:'Kubo Stay',tag:'Good for up to 3 guests',pr:['₱1,300','₱1,800'],
     ph:['kubostay1.jpg','kubostay2.png'],bl:[['Room features','Lower bed for 2 • Upper bed for 1 • Air-conditioned • Pool access'],['Additional guest','₱400/person/night']],n:'Rate includes up to 3 guests. Additional guest fee applies beyond the included capacity, subject to available sleeping space and approval.',bk:'Kubo Stay'},
    {id:'pool',nav:'Pool Cottages &amp; Kubo',e:'For guests who mainly want to swim',t:'Pool Cottages &amp; Kubo',tag:'Pool access: Infinity Pool • Jacuzzi • Kiddie Pool',
@@ -18,7 +17,7 @@
     bl:[['Villa features','2 private air-conditioned rooms • Mountain views • Private balcony • Entire ground-floor venue • Tables &amp; chairs • Kitchen access • Private CR • TV &amp; karaoke • Griller • Electric fan • Parking area • Private pool access'],['Other add-ons',EXTRA]],
     n:'Whole Villa rental gives your group exclusive use of both private rooms and the main venue for the duration of your stay. Additional arrangements for larger gatherings may be subject to applicable event rates.',bk:'Whole Villa'},
    {id:'venue',nav:'Venue',e:'Gatherings',t:'Private Event Venue',tag:'Good for up to 20 guests',
-    ph:['pev1.jpg*','pev2.jpg','pev3.jpg','pev4.jpg*'],tb:{h:['Schedule','Session','Rate'],r:[['Monday – Friday','Day · 9AM – 3PM','₱5,000'],['Monday – Friday','Night · 5PM – 11PM','₱5,500'],['Sat – Sun / Holiday','Day','₱6,000'],['Sat – Sun / Holiday','Night','₱6,500']]},
+    ph:['pev1.jpg','pev2.jpg','pev3.jpg','pev4.jpg'],tb:{h:['Schedule','Session','Rate'],r:[['Monday – Friday','Day · 9AM – 3PM','₱5,000'],['Monday – Friday','Night · 5PM – 11PM','₱5,500'],['Sat – Sun / Holiday','Day','₱6,000'],['Sat – Sun / Holiday','Night','₱6,500']]},
     bl:[['Venue features','Tables &amp; chairs • Kitchen access • Private CR • TV &amp; karaoke • Griller • Electric fan • Mountain &amp; countryside view'],['Optional add-ons','Private Pool Package (Infinity Pool • Jacuzzi • Kiddie Pool): Day/Night tour +₱1,500 • Overnight +₱2,500'],['More add-ons',EXTRA]],
     n:'Cookware and cooking utensils are not included. Guests may bring their own. Standard rates include up to 20 guests. For gatherings of more than 50–100 guests, customized event rates apply based on the total number of guests and required setup. Please contact us for a quotation.',bk:'Venue'}
   ];
@@ -85,14 +84,12 @@
   });
 })();
 
-/* ==================== ADD-ON 1: hover effects + gallery styles (injected CSS) ==================== */
 (function(){var s=document.createElement("style");s.textContent=`
 /* =====================================================================
    NAZKA Villea – ADD-ON STYLES (hover effects + photo gallery lightbox)
    Load AFTER style.css. Nothing in style.css is changed.
    ===================================================================== */
 
-/* ---------- Room photos: zoom + glow on hover ---------- */
 .gal img{cursor:zoom-in; transition:transform .5s cubic-bezier(.2,.7,.2,1), filter .4s, box-shadow .4s}
 .gal{position:relative}
 .gal figure,.gal .ph{margin:0}
@@ -157,7 +154,6 @@
   .pax button:active{transform:scale(.9)}
 }
 
-/* ---------- Lightbox (click any room photo) ---------- */
 #lb{position:fixed; inset:0; z-index:100; display:none; flex-direction:column; align-items:center; justify-content:center;
   background:rgba(14,13,6,.94); backdrop-filter:blur(8px); padding:56px 16px 20px; opacity:0; transition:opacity .3s}
 #lb.open{display:flex} #lb.show{opacity:1}
@@ -180,7 +176,6 @@
 #lb .thumbs img:hover{opacity:.9; transform:translateY(-2px)}
 #lb .thumbs img.on{opacity:1; border-color:var(--accent)}
 
-/* ---------- Soft fade-in for the first view of each section ---------- */
 .rv{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1; transform:none}
 
@@ -203,7 +198,6 @@
     villa:  [],
     venue:  []
   };
-  /* ------------------------------------------------------------- */
 
   var gals = document.querySelectorAll('.gal');
 
@@ -319,8 +313,6 @@
       out = document.getElementById('bpax'),
       box = document.querySelector('.pax');
   if(!room || !plus || !minus || !out || !box) return;
-
-  // small hint line under the guest counter
   var st = document.createElement('style');
   st.textContent = '.pax-hint{display:block;margin:5px 0 0 3px;font-size:.72rem;color:var(--muted);line-height:1.4}'+
                    '.pax-hint.full{color:var(--err)}'+
